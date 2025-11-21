@@ -5,14 +5,33 @@ interface GameInfoProps {
     currentPlayer: Player;
     winner: Player | 'draw' | null;
     onRestart: () => void;
+    gameMode: 'pvp' | 'pve';
+    onGameModeChange: (mode: 'pvp' | 'pve') => void;
 }
 
-const GameInfo: React.FC<GameInfoProps> = ({ currentPlayer, winner, onRestart }) => {
+const GameInfo: React.FC<GameInfoProps> = ({ currentPlayer, winner, onRestart, gameMode, onGameModeChange }) => {
     return (
         <div className="flex flex-col items-center gap-4 mb-6 p-6 bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md">
             <h1 className="text-3xl font-bold text-gray-800 drop-shadow-sm">
                 Gomoku
             </h1>
+
+            <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
+                <button
+                    onClick={() => onGameModeChange('pvp')}
+                    className={`px-4 py-1 rounded-md text-sm font-medium transition-all ${gameMode === 'pvp' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                >
+                    PvP
+                </button>
+                <button
+                    onClick={() => onGameModeChange('pve')}
+                    className={`px-4 py-1 rounded-md text-sm font-medium transition-all ${gameMode === 'pve' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                >
+                    PvE (AI)
+                </button>
+            </div>
 
             <div className="flex items-center gap-4">
                 <div className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${currentPlayer === 'black' ? 'bg-black text-white shadow-lg scale-105' : 'bg-gray-200 text-gray-500'
@@ -22,13 +41,13 @@ const GameInfo: React.FC<GameInfoProps> = ({ currentPlayer, winner, onRestart })
                 <div className="text-gray-400 font-bold">vs</div>
                 <div className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${currentPlayer === 'white' ? 'bg-white text-black border border-gray-200 shadow-lg scale-105' : 'bg-gray-200 text-gray-500'
                     }`}>
-                    White
+                    {gameMode === 'pve' ? 'AI (White)' : 'White'}
                 </div>
             </div>
 
             {winner && (
                 <div className="text-xl font-bold animate-bounce text-blue-600">
-                    {winner === 'draw' ? 'Draw!' : `${winner === 'black' ? 'Black' : 'White'} Wins!`}
+                    {winner === 'draw' ? 'Draw!' : `${winner === 'black' ? 'Black' : (gameMode === 'pve' ? 'AI' : 'White')} Wins!`}
                 </div>
             )}
 

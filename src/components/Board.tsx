@@ -35,7 +35,7 @@ const Board: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-4">
+        <div className="flex flex-col items-center justify-center min-h-screen p-4">
             <GameInfo currentPlayer={currentPlayer} winner={winner} onRestart={handleRestart} />
 
             <div className="relative p-4 bg-[#DEB887] rounded-lg shadow-2xl border-4 border-[#8B4513]">

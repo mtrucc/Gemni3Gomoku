@@ -3,7 +3,7 @@ import Board from './components/Board';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <Board />
     </div>
   );

@@ -12,7 +12,7 @@ interface CellProps {
 const Cell: React.FC<CellProps> = ({ value, onClick, isLastMove, rowIndex, colIndex }) => {
     return (
         <div
-            className="w-8 h-8 sm:w-10 sm:h-10 relative flex items-center justify-center cursor-pointer"
+            className="w-full h-full aspect-square relative flex items-center justify-center cursor-pointer"
             onClick={onClick}
         >
             {/* Grid lines */}
@@ -24,7 +24,7 @@ const Cell: React.FC<CellProps> = ({ value, onClick, isLastMove, rowIndex, colIn
             {/* Stone */}
             {value && (
                 <div
-                    className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full shadow-lg z-10 transition-transform duration-200 transform scale-100
+                    className={`w-[80%] h-[80%] rounded-full shadow-lg z-10 transition-transform duration-200 transform scale-100
             ${value === 'black'
                             ? 'bg-gradient-to-br from-gray-800 to-black ring-1 ring-gray-600'
                             : 'bg-gradient-to-br from-white to-gray-200 ring-1 ring-gray-300'}
@@ -32,13 +32,13 @@ const Cell: React.FC<CellProps> = ({ value, onClick, isLastMove, rowIndex, colIn
           `}
                 >
                     {/* Shine effect */}
-                    <div className="absolute top-1 left-1 w-2 h-2 rounded-full bg-white opacity-30"></div>
+                    <div className="absolute top-[15%] left-[15%] w-[25%] h-[25%] rounded-full bg-white opacity-30"></div>
                 </div>
             )}
 
             {/* Hover effect for empty cells */}
             {!value && (
-                <div className="w-4 h-4 rounded-full bg-gray-400 opacity-0 hover:opacity-50 transition-opacity duration-200 z-10"></div>
+                <div className="w-[40%] h-[40%] rounded-full bg-gray-400 opacity-0 hover:opacity-50 transition-opacity duration-200 z-10"></div>
             )}
         </div>
     );

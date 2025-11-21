@@ -72,21 +72,23 @@ const Board: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4">
-            <GameInfo
-                currentPlayer={currentPlayer}
-                winner={winner}
-                onRestart={handleRestart}
-                gameMode={gameMode}
-                onGameModeChange={handleGameModeChange}
-            />
+        <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen p-4 gap-8 bg-gray-50">
+            <div className="lg:order-2">
+                <GameInfo
+                    currentPlayer={currentPlayer}
+                    winner={winner}
+                    onRestart={handleRestart}
+                    gameMode={gameMode}
+                    onGameModeChange={handleGameModeChange}
+                />
+            </div>
 
-            <div className="relative p-4 bg-[#DEB887] rounded-lg shadow-2xl border-4 border-[#8B4513]">
+            <div className="relative p-2 sm:p-4 bg-[#DEB887] rounded-lg shadow-2xl border-4 border-[#8B4513] w-full max-w-[90vw] lg:max-w-[600px] aspect-square lg:order-1">
                 {/* Wood texture overlay */}
                 <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] pointer-events-none rounded-lg"></div>
 
                 <div
-                    className="grid gap-0 bg-[#DEB887]"
+                    className="grid gap-0 bg-[#DEB887] w-full h-full"
                     style={{ gridTemplateColumns: `repeat(${BOARD_SIZE}, minmax(0, 1fr))` }}
                 >
                     {board.map((row, rowIndex) => (

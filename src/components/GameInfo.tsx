@@ -11,37 +11,37 @@ interface GameInfoProps {
 
 const GameInfo: React.FC<GameInfoProps> = ({ currentPlayer, winner, onRestart, gameMode, onGameModeChange }) => {
     return (
-        <div className="flex flex-col items-center gap-4 mb-6 p-6 bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md">
-            <h1 className="text-3xl font-bold text-gray-800 drop-shadow-sm">
+        <div className="flex flex-col items-center gap-3 mb-4 p-4 bg-white rounded-xl shadow-lg border border-gray-200 w-full max-w-sm sm:max-w-md transition-all">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 drop-shadow-sm">
                 Gomoku
             </h1>
 
             <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
                 <button
                     onClick={() => onGameModeChange('pvp')}
-                    className={`px-4 py-1 rounded-md text-sm font-medium transition-all ${gameMode === 'pvp' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                    className={`px-3 py-1 rounded-md text-xs sm:text-sm font-medium transition-all ${gameMode === 'pvp' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
                         }`}
                 >
                     PvP
                 </button>
                 <button
                     onClick={() => onGameModeChange('pve')}
-                    className={`px-4 py-1 rounded-md text-sm font-medium transition-all ${gameMode === 'pve' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                    className={`px-3 py-1 rounded-md text-xs sm:text-sm font-medium transition-all ${gameMode === 'pve' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
                         }`}
                 >
                     PvE (AI)
                 </button>
             </div>
 
-            <div className="flex items-center gap-4">
-                <div className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${currentPlayer === 'black' ? 'bg-black text-white shadow-lg scale-105' : 'bg-gray-200 text-gray-500'
+            <div className="flex items-center gap-3 sm:gap-4">
+                <div className={`px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${currentPlayer === 'black' ? 'bg-black text-white shadow-lg scale-105' : 'bg-gray-200 text-gray-500'
                     }`}>
                     Black
                 </div>
-                <div className="text-gray-400 font-bold">vs</div>
-                <div className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${currentPlayer === 'white' ? 'bg-white text-black border border-gray-200 shadow-lg scale-105' : 'bg-gray-200 text-gray-500'
+                <div className="text-gray-400 font-bold text-sm">vs</div>
+                <div className={`px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${currentPlayer === 'white' ? 'bg-white text-black border border-gray-200 shadow-lg scale-105' : 'bg-gray-200 text-gray-500'
                     }`}>
-                    {gameMode === 'pve' ? 'AI (White)' : 'White'}
+                    {gameMode === 'pve' ? 'AI' : 'White'}
                 </div>
             </div>
 
